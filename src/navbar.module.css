@@ -1,0 +1,34 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+}
+
+.logo {
+  width: 190px;
+}
+
+.icon {
+  font-size: 17px;
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 225px;
+  }
+
+  .icon {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .logo {
+    width: 430px;
+  }
+
+  .icon {
+    font-size: 30px;
+  }
+}

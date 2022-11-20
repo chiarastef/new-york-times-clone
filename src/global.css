@@ -1,0 +1,18 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Variables */
+:root {
+  --primary-font: Georgia, "Times New Roman", Times, serif;
+  --secondary-font: Helvetica, Arial, sans-serif;
+}
+
+/* Global */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
