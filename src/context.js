@@ -6,6 +6,39 @@ const AppContext = React.createContext();
 function AppProvider({ children }) {
   const [articles, setArticles] = React.useState([]);
 
+  const sections = [
+    "home",
+    "world",
+    "us",
+    "politics",
+    "nyregion",
+    "business",
+    "opinion",
+    "science",
+    "arts",
+    "books",
+    "style",
+    "food",
+    "travel",
+    "t-magazine",
+    "realestate",
+  ];
+
+  function formatSection(section) {
+    switch (section) {
+      case "us":
+        return "U.S.";
+      case "nyregion":
+        return "N.Y.";
+      case "t-magazine":
+        return "magazine";
+      case "realestate":
+        return "real estate";
+      default:
+        return section;
+    }
+  }
+
   React.useEffect(() => {
     axios
       .get(
@@ -15,7 +48,9 @@ function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ articles }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ articles, sections, formatSection }}>
+      {children}
+    </AppContext.Provider>
   );
 }
 

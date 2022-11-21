@@ -1,30 +1,16 @@
 import React from "react";
+import { useGlobalContext } from "./context";
+
+import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
 
 import style from "./navbar.module.css";
-import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
 import logo from "./images/new-york-times-logo.png";
 
 function Navbar() {
+  const { sections, formatSection } = useGlobalContext();
+
   const [showMenu, setShowMenu] = React.useState(false);
   const [showSearch, setShowSearch] = React.useState(false);
-
-  const sections = [
-    "home",
-    "world",
-    "us",
-    "politics",
-    "nyregion",
-    "business",
-    "opinion",
-    "science",
-    "arts",
-    "books",
-    "style",
-    "food",
-    "travel",
-    "t-magazine",
-    "realestate",
-  ];
 
   return (
     <nav>
@@ -68,29 +54,9 @@ function Navbar() {
 
       <ul className={style.sections}>
         {sections.map((section, index) => {
-          let sectionName;
-
-          switch (section) {
-            case "us":
-              sectionName = "U.S.";
-              break;
-            case "nyregion":
-              sectionName = "N.Y.";
-              break;
-            case "t-magazine":
-              sectionName = "magazine";
-              break;
-            case "realestate":
-              sectionName = "real estate";
-              break;
-            default:
-              sectionName = section;
-              break;
-          }
-
           return (
             <li key={index} data-section={section}>
-              {sectionName}
+              {formatSection(section)}
             </li>
           );
         })}
@@ -112,29 +78,9 @@ function Navbar() {
           </form>
           <ul className={style.menu}>
             {sections.map((section, index) => {
-              let sectionName;
-
-              switch (section) {
-                case "us":
-                  sectionName = "U.S.";
-                  break;
-                case "nyregion":
-                  sectionName = "N.Y.";
-                  break;
-                case "t-magazine":
-                  sectionName = "magazine";
-                  break;
-                case "realestate":
-                  sectionName = "real estate";
-                  break;
-                default:
-                  sectionName = section;
-                  break;
-              }
-
               return (
                 <li key={index} data-section={section}>
-                  {sectionName}
+                  {formatSection(section)}
                 </li>
               );
             })}

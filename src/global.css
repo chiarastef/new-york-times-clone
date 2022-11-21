@@ -9,6 +9,8 @@
 :root {
   --primary-font: Georgia, "Times New Roman", Times, serif;
   --secondary-font: Helvetica, Arial, sans-serif;
+  --border: 1px solid #ebebeb;
+  --secondary-font-color: #727272;
 }
 
 /* Global */

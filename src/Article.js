@@ -1,8 +1,18 @@
 import React from "react";
+import { useGlobalContext } from "./context";
 
 import style from "./article.module.css";
 
-function Article({ title, byline, section, multimedia, published_date }) {
+function Article({
+  section,
+  published_date,
+  title,
+  byline,
+  multimedia,
+  abstract,
+}) {
+  const { formatSection } = useGlobalContext();
+
   const options = {
     year: "numeric",
     month: "long",
@@ -13,10 +23,14 @@ function Article({ title, byline, section, multimedia, published_date }) {
 
   return (
     <div className={style.container}>
-      <h3>{title}</h3>
-      <p>{byline}</p>
-      <p>{date}</p>
-      <img src={multimedia[1].url} alt={title} className={style.image} />
+      <div className={style.info}>
+        <span className={style.section}>{formatSection(section)}</span>
+        <span className={style.date}>{date}</span>
+      </div>
+      <h3 className={style.title}>{title}</h3>
+      <div className={style.author}>{byline}</div>
+      <img src={multimedia[0].url} alt={title} className={style.image} />
+      <div className={style.abstract}>{abstract}</div>
     </div>
   );
 }

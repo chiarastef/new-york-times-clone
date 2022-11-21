@@ -18,12 +18,12 @@ nav {
 }
 
 .searchIcon {
-  visibility: hidden;
   font-size: 24px;
+  visibility: hidden;
 }
 
 hr {
-  border: 1px solid #ebebeb;
+  border: var(--border);
 }
 
 .sectionMenu {
@@ -39,26 +39,26 @@ hr {
 }
 
 .searchInput {
-  border: 1px solid #e2e2e2;
-  color: #666666;
   font-size: 11px;
   font-family: var(--secondary-font);
+  color: var(--secondary-font-color);
   text-transform: uppercase;
   height: 35px;
+  border: var(--border);
   padding: 10px;
 }
 
 .searchButton {
-  border-radius: 3px;
-  cursor: pointer;
+  font-size: 18px;
   font-family: var(--secondary-font);
+  border-radius: 3px;
+  color: #ffffff;
+  height: 35px;
   background-color: #567b95;
   border: 1px solid #326891;
-  color: #ffffff;
-  font-size: 18px;
-  height: 35px;
   padding: 8px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .menu {
@@ -72,8 +72,8 @@ hr {
 }
 
 .menu > li {
-  margin-bottom: 20px;
   text-transform: capitalize;
+  margin-bottom: 20px;
 }
 
 .sections {
