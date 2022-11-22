@@ -20,8 +20,10 @@ function Navbar() {
 
   if (showMenu) {
     wrapperDiv.style.overflowY = "hidden";
+    wrapperDiv.style.position = "fixed";
   } else {
     wrapperDiv.style.overflowY = "visible";
+    wrapperDiv.style.position = "relative";
   }
 
   return (
