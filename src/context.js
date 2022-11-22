@@ -4,7 +4,7 @@ import axios from "axios";
 const AppContext = React.createContext();
 
 function AppProvider({ children }) {
-  const [section, setSection] = React.useState("");
+  const [section, setSection] = React.useState("home");
   const [articles, setArticles] = React.useState([]);
 
   const sections = [
@@ -25,6 +25,10 @@ function AppProvider({ children }) {
     "realestate",
   ];
 
+  React.useEffect(() => {
+    setSection("home");
+  }, []);
+
   function formatSection(section) {
     switch (section) {
       case "us":
@@ -40,18 +44,14 @@ function AppProvider({ children }) {
     }
   }
 
-  function getData() {
+  React.useEffect(() => {
+    setArticles([]);
+
     axios
       .get(
         `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${process.env.REACT_APP_API_KEY}`
       )
       .then((response) => setArticles(response.data.results));
-  }
-
-  React.useEffect(() => {
-    setArticles([]);
-
-    getData();
   }, [section]);
 
   return (

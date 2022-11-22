@@ -6,12 +6,12 @@ import Article from "./Article";
 import style from "./section.module.css";
 
 function Section() {
-  const { formatSection, setSection, articles, loading } = useGlobalContext();
+  const { formatSection, setSection, articles } = useGlobalContext();
   const { id } = useParams();
 
   React.useEffect(() => {
     setSection(id);
-  }, [id]);
+  }, [id, setSection]);
 
   return (
     <div className={style.container}>

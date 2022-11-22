@@ -5,11 +5,11 @@ import style from "./home.module.css";
 import Article from "./Article";
 
 function Home() {
-  const { articles, setSection, loading } = useGlobalContext();
+  const { articles, setSection } = useGlobalContext();
 
   React.useEffect(() => {
     setSection("home");
-  }, []);
+  }, [setSection]);
 
   return (
     <div className={style.container}>
