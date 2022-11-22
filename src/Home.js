@@ -1,11 +1,15 @@
+import React from "react";
 import { useGlobalContext } from "./context";
 
 import style from "./home.module.css";
-
 import Article from "./Article";
 
 function Home() {
-  const { articles } = useGlobalContext();
+  const { articles, setSection, loading } = useGlobalContext();
+
+  React.useEffect(() => {
+    setSection("home");
+  }, []);
 
   return (
     <div className={style.container}>

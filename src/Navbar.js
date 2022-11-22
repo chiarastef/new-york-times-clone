@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import { useGlobalContext } from "./context";
 
 import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
@@ -11,6 +12,12 @@ function Navbar() {
 
   const [showMenu, setShowMenu] = React.useState(false);
   const [showSearch, setShowSearch] = React.useState(false);
+
+  if (showMenu) {
+    document.body.style.overflowY = "hidden";
+  } else {
+    document.body.style.overflowY = "visible";
+  }
 
   return (
     <nav>
@@ -27,7 +34,9 @@ function Navbar() {
           />
         )}
 
-        <img src={logo} alt="New York Times logo" className={style.logo} />
+        <Link to="/">
+          <img src={logo} alt="New York Times logo" className={style.logo} />
+        </Link>
 
         <HiOutlineSearch
           className={style.searchIcon}
@@ -56,7 +65,11 @@ function Navbar() {
         {sections.map((section, index) => {
           return (
             <li key={index} data-section={section}>
-              {formatSection(section)}
+              {section === "home" ? (
+                <NavLink to={`/`}>{formatSection(section)}</NavLink>
+              ) : (
+                <NavLink to={`/${section}`}>{formatSection(section)}</NavLink>
+              )}
             </li>
           );
         })}
@@ -80,7 +93,18 @@ function Navbar() {
             {sections.map((section, index) => {
               return (
                 <li key={index} data-section={section}>
-                  {formatSection(section)}
+                  {section === "home" ? (
+                    <NavLink to={`/`} onClick={() => setShowMenu(false)}>
+                      {formatSection(section)}
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      to={`/${section}`}
+                      onClick={() => setShowMenu(false)}
+                    >
+                      {formatSection(section)}
+                    </NavLink>
+                  )}
                 </li>
               );
             })}

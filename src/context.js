@@ -4,6 +4,7 @@ import axios from "axios";
 const AppContext = React.createContext();
 
 function AppProvider({ children }) {
+  const [section, setSection] = React.useState("");
   const [articles, setArticles] = React.useState([]);
 
   const sections = [
@@ -39,16 +40,24 @@ function AppProvider({ children }) {
     }
   }
 
-  React.useEffect(() => {
+  function getData() {
     axios
       .get(
-        `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_API_KEY}`
+        `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${process.env.REACT_APP_API_KEY}`
       )
       .then((response) => setArticles(response.data.results));
-  }, []);
+  }
+
+  React.useEffect(() => {
+    setArticles([]);
+
+    getData();
+  }, [section]);
 
   return (
-    <AppContext.Provider value={{ articles, sections, formatSection }}>
+    <AppContext.Provider
+      value={{ articles, sections, formatSection, setSection }}
+    >
       {children}
     </AppContext.Provider>
   );

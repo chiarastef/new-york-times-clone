@@ -27,9 +27,17 @@ hr {
 }
 
 .sectionMenu {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.noScroll {
+  overflow-y: hidden;
 }
 
 .searchForm {
@@ -85,6 +93,14 @@ hr {
 
 .sections > li {
   text-transform: capitalize;
+}
+
+.sections > li > a,
+.menu > li,
+a {
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
