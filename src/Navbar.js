@@ -10,9 +10,12 @@ import logo from "./images/new-york-times-logo.png";
 function Navbar() {
   const { sections, formatSection } = useGlobalContext();
 
+  // Navbar menu (mobile and tablet view)
   const [showMenu, setShowMenu] = React.useState(false);
+  // Search input (desktop view)
   const [showSearch, setShowSearch] = React.useState(false);
 
+  // Stop body from scrolling when nav menu is open
   if (showMenu) {
     document.body.style.overflowY = "hidden";
   } else {

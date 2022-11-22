@@ -4,9 +4,11 @@ import axios from "axios";
 const AppContext = React.createContext();
 
 function AppProvider({ children }) {
-  const [section, setSection] = React.useState("home");
+  const [section, setSection] = React.useState("");
   const [articles, setArticles] = React.useState([]);
+  const [loaded, setLoaded] = React.useState(false);
 
+  // NY Times Top Stories API sections
   const sections = [
     "home",
     "world",
@@ -25,10 +27,7 @@ function AppProvider({ children }) {
     "realestate",
   ];
 
-  React.useEffect(() => {
-    setSection("home");
-  }, []);
-
+  // Format sections for menu
   function formatSection(section) {
     switch (section) {
       case "us":
@@ -44,19 +43,23 @@ function AppProvider({ children }) {
     }
   }
 
+  // API Call
   React.useEffect(() => {
-    setArticles([]);
+    setLoaded(false);
 
-    axios
-      .get(
-        `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((response) => setArticles(response.data.results));
+    // Call API only once we have a section
+    section &&
+      axios
+        .get(
+          `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${process.env.REACT_APP_API_KEY}`
+        )
+        .then((response) => setArticles(response.data.results))
+        .then(() => setLoaded(true));
   }, [section]);
 
   return (
     <AppContext.Provider
-      value={{ articles, sections, formatSection, setSection }}
+      value={{ sections, formatSection, setSection, loaded, articles }}
     >
       {children}
     </AppContext.Provider>

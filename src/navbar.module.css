@@ -28,6 +28,7 @@ hr {
 
 .sectionMenu {
   position: fixed;
+  overflow-y: scroll;
   width: 100%;
   height: 100vh;
   background-color: #ffffff;

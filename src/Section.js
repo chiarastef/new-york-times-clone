@@ -6,7 +6,7 @@ import Article from "./Article";
 import style from "./section.module.css";
 
 function Section() {
-  const { formatSection, setSection, articles } = useGlobalContext();
+  const { formatSection, setSection, articles, loaded } = useGlobalContext();
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -17,11 +17,15 @@ function Section() {
     <div className={style.container}>
       <h2 className={style.title}>{formatSection(id)} News</h2>
       <hr />
-      <div className={style.container}>
-        {articles.map((article, index) => {
-          return <Article key={index} {...article} />;
-        })}
-      </div>
+      {loaded ? (
+        <div className={style.container}>
+          {articles.map((article, index) => {
+            return <Article key={index} {...article} />;
+          })}
+        </div>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 }
