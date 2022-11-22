@@ -16,10 +16,12 @@ function Navbar() {
   const [showSearch, setShowSearch] = React.useState(false);
 
   // Stop body from scrolling when nav menu is open
+  const wrapperDiv = document.getElementById("root");
+
   if (showMenu) {
-    document.body.style.overflowY = "hidden";
+    wrapperDiv.style.overflowY = "hidden";
   } else {
-    document.body.style.overflowY = "visible";
+    wrapperDiv.style.overflowY = "visible";
   }
 
   return (
