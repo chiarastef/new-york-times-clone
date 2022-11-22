@@ -1,4 +1,5 @@
 import React from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import { useGlobalContext } from "./context";
 
 import style from "./home.module.css";
@@ -20,7 +21,16 @@ function Home() {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return (
+      <ClipLoader
+        color={"#727272"}
+        cssOverride={{ display: "block", margin: "80px auto" }}
+        size={80}
+        speedMultiplier={0.5}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
   }
 }
 

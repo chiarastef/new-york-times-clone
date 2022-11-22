@@ -24,6 +24,7 @@ This is the final project from the React course on the online course provider [S
 - React
 - [New York Times API](https://developer.nytimes.com/)
 - [Flaticon](https://www.flaticon.com/) for the favicon
+- [React Spinners](https://www.npmjs.com/package/react-spinners)
 
 ## Author
 
