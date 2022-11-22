@@ -29,8 +29,9 @@ hr {
 .sectionMenu {
   position: fixed;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
