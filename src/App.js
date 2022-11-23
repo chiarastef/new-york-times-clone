@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Section from "./pages/Section";
 import SearchResults from "./pages/SearchResults";
 import Error from "./pages/Error";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/search/:id" element={<SearchResults />} />
           <Route path="*" element={<Error />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

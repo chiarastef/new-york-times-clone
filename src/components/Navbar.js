@@ -57,7 +57,7 @@ function Navbar() {
         </Link>
 
         <HiOutlineSearch
-          className={style.searchIcon}
+          className={`${style.searchIcon} ${style.icon}`}
           onClick={() => setShowSearch(!showSearch)}
         />
       </div>
@@ -86,7 +86,7 @@ function Navbar() {
       <ul className={style.sections}>
         {sections.map((section, index) => {
           return (
-            <li key={index} data-section={section}>
+            <li key={index}>
               {section === "home" ? (
                 <NavLink to={`/`}>{formatSection(section)}</NavLink>
               ) : (
@@ -120,7 +120,7 @@ function Navbar() {
           <ul className={style.menu}>
             {sections.map((section, index) => {
               return (
-                <li key={index} data-section={section}>
+                <li key={index}>
                   {section === "home" ? (
                     <NavLink to={`/`} onClick={() => setShowMenu(false)}>
                       {formatSection(section)}

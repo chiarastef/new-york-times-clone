@@ -3,6 +3,10 @@
   margin-top: 25px;
 }
 
+.container:last-of-type {
+  border-bottom: none;
+}
+
 .info {
   display: flex;
   justify-content: space-between;

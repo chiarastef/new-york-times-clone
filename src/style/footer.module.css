@@ -1,0 +1,42 @@
+.divider {
+  margin-top: 30px;
+}
+
+.footerContainer {
+  padding: 20px;
+}
+
+.logo {
+  width: 184px;
+}
+
+.nav {
+  font-size: 15px;
+  font-family: var(--secondary-font);
+  list-style: none;
+  text-transform: capitalize;
+  columns: auto 2;
+  margin: 20px 0;
+}
+
+.nav > li {
+  margin-bottom: 20px;
+}
+
+.copyright {
+  text-align: center;
+  padding: 8px;
+  border-top: var(--border);
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    columns: 3;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nav {
+    columns: 4;
+  }
+}
