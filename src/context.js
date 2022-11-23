@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 const AppContext = React.createContext();
 
 function AppProvider({ children }) {
+  const [loaded, setLoaded] = React.useState(false);
   const [section, setSection] = React.useState("");
   const [articles, setArticles] = React.useState([]);
-  const [loaded, setLoaded] = React.useState(false);
+  const [searchedArticles, setSearchedArticles] = React.useState([]);
 
   // NY Times Top Stories API sections
   const sections = [
@@ -27,7 +28,7 @@ function AppProvider({ children }) {
     "realestate",
   ];
 
-  // Format sections for menu
+  // Format sections for navbar menu
   function formatSection(section) {
     switch (section) {
       case "us":
@@ -43,7 +44,7 @@ function AppProvider({ children }) {
     }
   }
 
-  // API Call
+  // NY Times Top Stories API Call
   React.useEffect(() => {
     setLoaded(false);
 
@@ -54,12 +55,34 @@ function AppProvider({ children }) {
           `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${process.env.REACT_APP_API_KEY}`
         )
         .then((response) => setArticles(response.data.results))
-        .then(() => setLoaded(true));
+        .then(() => setLoaded(true))
+        .catch((error) => console.log(error));
   }, [section]);
+
+  // NY Times Article Search API
+  function searchArticles(item) {
+    setLoaded(false);
+
+    axios
+      .get(
+        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${item}&api-key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((response) => setSearchedArticles(response.data.response.docs))
+      .then(() => setLoaded(true))
+      .catch((error) => console.log(error));
+  }
 
   return (
     <AppContext.Provider
-      value={{ sections, formatSection, setSection, loaded, articles }}
+      value={{
+        sections,
+        formatSection,
+        setSection,
+        loaded,
+        articles,
+        searchArticles,
+        searchedArticles,
+      }}
     >
       {children}
     </AppContext.Provider>

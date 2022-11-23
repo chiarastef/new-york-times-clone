@@ -1,14 +1,13 @@
 import React from "react";
-import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import { useGlobalContext } from "./context";
 import Article from "./Article";
-import style from "./section.module.css";
+import style from "./page.module.css";
 
 function Section() {
   const { formatSection, setSection, articles, loaded } = useGlobalContext();
-
   const { id } = useParams();
 
   React.useEffect(() => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "./context";
 
 import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
@@ -8,16 +8,17 @@ import style from "./navbar.module.css";
 import logo from "./images/new-york-times-logo.png";
 
 function Navbar() {
-  const { sections, formatSection } = useGlobalContext();
-
+  const [search, setSearch] = React.useState("");
   // Navbar menu (mobile and tablet view)
   const [showMenu, setShowMenu] = React.useState(false);
   // Search input (desktop view)
   const [showSearch, setShowSearch] = React.useState(false);
 
+  const navigate = useNavigate();
+  const { sections, formatSection, searchArticles } = useGlobalContext();
+
   // Stop body from scrolling when nav menu is open
   const wrapperDiv = document.getElementById("root");
-
   if (showMenu) {
     wrapperDiv.style.overflowY = "hidden";
     wrapperDiv.style.position = "fixed";
@@ -26,8 +27,19 @@ function Navbar() {
     wrapperDiv.style.position = "relative";
   }
 
+  // Search articles
+  function handleSearch(e) {
+    e.preventDefault();
+    searchArticles(search);
+    setShowMenu(false);
+    setShowSearch(false);
+    setSearch("");
+    navigate(`/search/${search}`);
+  }
+
   return (
-    <nav>
+    <nav className={style.navbarContainer}>
+      {/* Main navbar with logo */}
       <div className={style.navbar}>
         {showMenu ? (
           <HiOutlineX
@@ -53,13 +65,16 @@ function Navbar() {
 
       <hr />
 
+      {/* Search form in desktop view */}
       {showSearch && (
         <div>
-          <form className={style.searchForm}>
+          <form className={style.searchForm} onSubmit={handleSearch}>
             <input
               type="text"
               placeholder="search"
               className={style.searchInput}
+              autoFocus
+              onChange={(e) => setSearch(e.target.value)}
             />
             <button type="submit" className={style.searchButton}>
               <HiOutlineSearch />
@@ -68,6 +83,7 @@ function Navbar() {
         </div>
       )}
 
+      {/* Navbar menu in desktop view */}
       <ul className={style.sections}>
         {sections.map((section, index) => {
           return (
@@ -84,14 +100,18 @@ function Navbar() {
 
       <hr />
 
+      {/* Navbar menu in mobile and tablet view */}
       {showMenu && (
         <div className={style.sectionMenu}>
-          <form className={style.searchForm}>
+          <form className={style.searchForm} onSubmit={handleSearch}>
             <input
               type="text"
               placeholder="search"
               className={style.searchInput}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
+
             <button type="submit" className={style.searchButton}>
               <HiOutlineSearch />
             </button>

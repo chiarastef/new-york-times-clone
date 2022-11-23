@@ -19,3 +19,7 @@
   margin: 0 auto;
   height: 100%;
 }
+
+hr {
+  border: var(--border);
+}

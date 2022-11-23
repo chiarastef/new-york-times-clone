@@ -57,3 +57,17 @@
 .container:nth-child(4n + 1) .abstract {
   display: block;
 }
+
+/* Search Article */
+.searchedTitle {
+  font-size: 32px;
+}
+
+.searchedDate {
+  display: inline;
+  font-size: 16px;
+}
+
+.searchedAbstract {
+  display: block;
+}

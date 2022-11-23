@@ -13,12 +13,12 @@ function Article({
 }) {
   const { formatSection } = useGlobalContext();
 
+  // Format date
   const options = {
     year: "numeric",
     month: "long",
     day: "numeric",
   };
-
   const date = new Date(published_date).toLocaleDateString(undefined, options);
 
   if (section !== "admin" && section) {
