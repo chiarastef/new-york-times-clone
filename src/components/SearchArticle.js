@@ -1,6 +1,6 @@
 import React from "react";
 
-import style from "./article.module.css";
+import style from "../style/article.module.css";
 
 function SearchArticle({
   byline,

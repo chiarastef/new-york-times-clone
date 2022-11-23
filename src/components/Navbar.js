@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "../context";
 
 import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
 
-import style from "./navbar.module.css";
-import logo from "./images/new-york-times-logo.png";
+import style from "../style/navbar.module.css";
+import logo from "../images/new-york-times-logo.png";
 
 function Navbar() {
   const [search, setSearch] = React.useState("");

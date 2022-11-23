@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 
-import { useGlobalContext } from "./context";
-import SearchArticle from "./SearchArticle";
-import style from "./page.module.css";
+import { useGlobalContext } from "../context";
+import SearchArticle from "../components/SearchArticle";
+import style from "../style/page.module.css";
 
 function SearchResults() {
   const { formatSection, searchedArticles, loaded, searchArticles } =

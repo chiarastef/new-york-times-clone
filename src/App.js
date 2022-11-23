@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Navbar from "./Navbar";
-import Home from "./Home";
-import Section from "./Section";
-import SearchResults from "./SearchResults";
-import Error from "./Error";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Section from "./pages/Section";
+import SearchResults from "./pages/SearchResults";
+import Error from "./pages/Error";
 
 function App() {
   return (

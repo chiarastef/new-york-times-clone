@@ -2,9 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
-import { useGlobalContext } from "./context";
-import Article from "./Article";
-import style from "./page.module.css";
+import { useGlobalContext } from "../context";
+import Article from "../components/Article";
+import style from "../style/page.module.css";
 
 function Section() {
   const { formatSection, setSection, articles, loaded } = useGlobalContext();

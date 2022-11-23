@@ -1,7 +1,7 @@
 import React from "react";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "../context";
 
-import style from "./article.module.css";
+import style from "../style/article.module.css";
 
 function Article({
   section,
