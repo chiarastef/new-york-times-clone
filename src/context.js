@@ -60,7 +60,7 @@ function AppProvider({ children }) {
   }, [section]);
 
   // NY Times Article Search API
-  function searchArticles(item) {
+  const searchArticles = React.useCallback((item) => {
     setLoaded(false);
 
     axios
@@ -70,7 +70,7 @@ function AppProvider({ children }) {
       .then((response) => setSearchedArticles(response.data.response.docs))
       .then(() => setLoaded(true))
       .catch((error) => console.log(error));
-  }
+  }, []);
 
   return (
     <AppContext.Provider

@@ -13,7 +13,7 @@ function SearchResults() {
 
   useEffect(() => {
     searchArticles(id);
-  }, [id]);
+  }, [id, searchArticles]);
 
   if (loaded && searchedArticles.length < 1) {
     return (
