@@ -23,3 +23,13 @@
 hr {
   border: var(--border);
 }
+
+.btn {
+  font-size: 18px;
+  font-family: var(--secondary-font);
+  border-radius: 3px;
+  color: #ffffff;
+  background-color: #567b95;
+  border: 1px solid #326891;
+  cursor: pointer;
+}

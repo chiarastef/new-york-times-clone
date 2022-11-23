@@ -41,16 +41,9 @@
 }
 
 .searchButton {
-  font-size: 18px;
-  font-family: var(--secondary-font);
-  border-radius: 3px;
-  color: #ffffff;
   height: 35px;
-  background-color: #567b95;
-  border: 1px solid #326891;
   padding: 8px;
   margin-left: 10px;
-  cursor: pointer;
 }
 
 /* Navbar menu (desktop view) */

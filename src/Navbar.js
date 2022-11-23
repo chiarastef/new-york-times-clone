@@ -76,7 +76,7 @@ function Navbar() {
               autoFocus
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button type="submit" className={style.searchButton}>
+            <button type="submit" className={`btn ${style.searchButton}`}>
               <HiOutlineSearch />
             </button>
           </form>
@@ -91,7 +91,9 @@ function Navbar() {
               {section === "home" ? (
                 <NavLink to={`/`}>{formatSection(section)}</NavLink>
               ) : (
-                <NavLink to={`/${section}`}>{formatSection(section)}</NavLink>
+                <NavLink to={`/section/${section}`}>
+                  {formatSection(section)}
+                </NavLink>
               )}
             </li>
           );
@@ -112,7 +114,7 @@ function Navbar() {
               onChange={(e) => setSearch(e.target.value)}
             />
 
-            <button type="submit" className={style.searchButton}>
+            <button type="submit" className={`btn ${style.searchButton}`}>
               <HiOutlineSearch />
             </button>
           </form>
@@ -126,7 +128,7 @@ function Navbar() {
                     </NavLink>
                   ) : (
                     <NavLink
-                      to={`/${section}`}
+                      to={`/section/${section}`}
                       onClick={() => setShowMenu(false)}
                     >
                       {formatSection(section)}

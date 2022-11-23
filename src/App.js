@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Section from "./Section";
 import SearchResults from "./SearchResults";
+import Error from "./Error";
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/:id" element={<Section />} />
-          <Route path="/search/:id" element={<SearchResults />}></Route>
+          <Route path="/section/:id" element={<Section />} />
+          <Route path="/search/:id" element={<SearchResults />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </Router>
     </div>
