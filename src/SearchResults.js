@@ -7,8 +7,7 @@ import SearchArticle from "./SearchArticle";
 import style from "./page.module.css";
 
 function SearchResults() {
-  const { formatSection, searchedArticles, loaded, searchArticles } =
-    useGlobalContext();
+  const { formatSection, searchedArticles, loaded } = useGlobalContext();
   const { id } = useParams();
 
   if (searchedArticles.length < 1) {
