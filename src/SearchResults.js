@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 
@@ -7,10 +7,15 @@ import SearchArticle from "./SearchArticle";
 import style from "./page.module.css";
 
 function SearchResults() {
-  const { formatSection, searchedArticles, loaded } = useGlobalContext();
+  const { formatSection, searchedArticles, loaded, searchArticles } =
+    useGlobalContext();
   const { id } = useParams();
 
-  if (searchedArticles.length < 1) {
+  useEffect(() => {
+    searchArticles(id);
+  }, [id]);
+
+  if (loaded && searchedArticles.length < 1) {
     return (
       <div className={style.container}>
         <span className={style.preTitle}>Showing results for:</span>

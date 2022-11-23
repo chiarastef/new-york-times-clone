@@ -15,7 +15,7 @@ function Navbar() {
   const [showSearch, setShowSearch] = React.useState(false);
 
   const navigate = useNavigate();
-  const { sections, formatSection, searchArticles } = useGlobalContext();
+  const { sections, formatSection } = useGlobalContext();
 
   // Stop body from scrolling when nav menu is open
   const wrapperDiv = document.getElementById("root");
@@ -30,7 +30,6 @@ function Navbar() {
   // Search articles
   function handleSearch(e) {
     e.preventDefault();
-    searchArticles(search);
     setShowMenu(false);
     setShowSearch(false);
     setSearch("");
