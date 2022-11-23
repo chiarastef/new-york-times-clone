@@ -2,7 +2,14 @@ import React from "react";
 
 import style from "./article.module.css";
 
-function SearchArticle({ byline, abstract, section_name, pub_date, headline }) {
+function SearchArticle({
+  byline,
+  abstract,
+  section_name,
+  pub_date,
+  headline,
+  web_url,
+}) {
   // Format date
   const options = {
     year: "numeric",
@@ -17,9 +24,11 @@ function SearchArticle({ byline, abstract, section_name, pub_date, headline }) {
         <span className={style.section}>{section_name}</span>
         <span className={`${style.date} ${style.searchedDate}`}>{date}</span>
       </div>
-      <h3 className={`${style.title} ${style.searchedTitle}`}>
-        {headline.main}
-      </h3>
+      <a href={web_url} target="_blank" rel="noreferrer">
+        <h3 className={`${style.title} ${style.searchedTitle}`}>
+          {headline.main}
+        </h3>
+      </a>
       <div className={style.author}>{byline.original}</div>
       <div className={`${style.abstract} ${style.searchedAbstract}`}>
         {abstract}

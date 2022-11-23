@@ -10,6 +10,7 @@ function Article({
   byline,
   multimedia,
   abstract,
+  url,
 }) {
   const { formatSection } = useGlobalContext();
 
@@ -28,7 +29,9 @@ function Article({
           <span className={style.section}>{formatSection(section)}</span>
           <span className={style.date}>{date}</span>
         </div>
-        <h3 className={style.title}>{title}</h3>
+        <a href={url} target="_blank" rel="noreferrer">
+          <h3 className={style.title}>{title}</h3>
+        </a>
         <div className={style.author}>{byline}</div>
         {multimedia && (
           <img src={multimedia[0].url} alt={title} className={style.image} />
