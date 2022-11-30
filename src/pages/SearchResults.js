@@ -9,17 +9,17 @@ import style from "../style/page.module.css";
 function SearchResults() {
   const { formatSection, searchedArticles, loaded, searchArticles } =
     useGlobalContext();
-  const { id } = useParams();
+  const { query } = useParams();
 
   useEffect(() => {
-    searchArticles(id);
-  }, [id, searchArticles]);
+    searchArticles(query);
+  }, [query, searchArticles]);
 
   if (loaded && searchedArticles.length < 1) {
     return (
       <div className={style.container}>
         <span className={style.preTitle}>Showing results for:</span>
-        <h2 className={style.title}>{formatSection(id)}</h2>
+        <h2 className={style.title}>{formatSection(query)}</h2>
         <hr />
         <div className={style.container}>No search results</div>
       </div>
@@ -29,7 +29,7 @@ function SearchResults() {
   return (
     <div className={style.container}>
       <span className={style.preTitle}>Showing results for:</span>
-      <h2 className={style.title}>{formatSection(id)}</h2>
+      <h2 className={style.title}>{formatSection(query)}</h2>
       <hr />
       {loaded ? (
         <div className={style.container}>

@@ -15,8 +15,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/section/:id" element={<Section />} />
-          <Route path="/search/:id" element={<SearchResults />} />
+          <Route path="/section/:sectionName" element={<Section />} />
+          <Route path="/search/:query" element={<SearchResults />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

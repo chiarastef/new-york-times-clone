@@ -8,15 +8,15 @@ import style from "../style/page.module.css";
 
 function Section() {
   const { formatSection, setSection, articles, loaded } = useGlobalContext();
-  const { id } = useParams();
+  const { sectionName } = useParams();
 
   React.useEffect(() => {
-    setSection(id);
-  }, [id, setSection]);
+    setSection(sectionName);
+  }, [sectionName, setSection]);
 
   return (
     <div className={style.container}>
-      <h2 className={style.title}>{formatSection(id)} News</h2>
+      <h2 className={style.title}>{formatSection(sectionName)} News</h2>
       <hr />
       {loaded ? (
         <div className={style.container}>
