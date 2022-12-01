@@ -56,7 +56,10 @@ function AppProvider({ children }) {
         )
         .then((response) => setArticles(response.data.results))
         .then(() => setLoaded(true))
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          setLoaded(true);
+          console.log(error);
+        });
   }, [section]);
 
   // NY Times Article Search API

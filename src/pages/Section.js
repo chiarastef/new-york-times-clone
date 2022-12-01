@@ -14,6 +14,17 @@ function Section() {
     setSection(sectionName);
   }, [sectionName, setSection]);
 
+  // Check if there are articles related to the section
+  if (loaded && articles.length < 1) {
+    return (
+      <div className={style.container}>
+        <h2 className={style.title}>{formatSection(sectionName)} News</h2>
+        <hr />
+        <div className={style.container}>No articles found</div>
+      </div>
+    );
+  }
+
   return (
     <div className={style.container}>
       <h2 className={style.title}>{formatSection(sectionName)} News</h2>

@@ -1,3 +1,12 @@
 .container {
+  display: grid;
   padding: 0 20px;
+  grid-gap: 20px;
+  grid-auto-flow: dense;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }

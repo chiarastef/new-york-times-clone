@@ -7,7 +7,7 @@ import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
 import style from "../style/navbar.module.css";
 import logo from "../images/new-york-times-logo.png";
 
-function Navbar() {
+function Navbar(props) {
   const [search, setSearch] = React.useState("");
   // Navbar menu (mobile and tablet view)
   const [showMenu, setShowMenu] = React.useState(false);
@@ -17,14 +17,13 @@ function Navbar() {
   const navigate = useNavigate();
   const { sections, formatSection } = useGlobalContext();
 
-  // Stop body from scrolling when nav menu is open
-  const wrapperDiv = document.getElementById("root");
-  if (showMenu) {
-    wrapperDiv.style.overflowY = "hidden";
-    wrapperDiv.style.position = "fixed";
-  } else {
-    wrapperDiv.style.overflowY = "visible";
-    wrapperDiv.style.position = "relative";
+  // Stop body from scrolling when nav menu is open after checking if ref current is not undefined
+  if (showMenu && props.container.current) {
+    props.container.current.style.overflowY = "hidden";
+    props.container.current.style.position = "fixed";
+  } else if (props.container.current) {
+    props.container.current.style.overflowY = "visible";
+    props.container.current.style.position = "relative";
   }
 
   // Search articles
@@ -66,7 +65,7 @@ function Navbar() {
 
       {/* Search form in desktop view */}
       {showSearch && (
-        <div>
+        <>
           <form className={style.searchForm} onSubmit={handleSearch}>
             <input
               type="text"
@@ -79,7 +78,7 @@ function Navbar() {
               <HiOutlineSearch />
             </button>
           </form>
-        </div>
+        </>
       )}
 
       {/* Navbar menu in desktop view */}

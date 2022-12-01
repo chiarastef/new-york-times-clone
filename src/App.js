@@ -9,10 +9,12 @@ import Error from "./pages/Error";
 import Footer from "./components/Footer";
 
 function App() {
+  const container = React.useRef();
+
   return (
-    <div className="container">
+    <div className="container" ref={container}>
       <Router>
-        <Navbar />
+        <Navbar container={container} />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/section/:sectionName" element={<Section />} />
