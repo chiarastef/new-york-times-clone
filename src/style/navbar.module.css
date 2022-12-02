@@ -34,7 +34,7 @@
   font-size: 11px;
   font-family: var(--secondary-font);
   color: var(--secondary-font-color);
-  text-transform: uppercase;
+  text-transform: capitalize;
   height: 35px;
   border: var(--border);
   padding: 10px;

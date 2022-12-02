@@ -30,7 +30,7 @@ function Section() {
       <h2 className={style.title}>{formatSection(sectionName)} News</h2>
       <hr />
       {loaded ? (
-        <div className={style.container}>
+        <div className={style.article}>
           {articles.map((article, index) => {
             return <Article key={index} {...article} />;
           })}
