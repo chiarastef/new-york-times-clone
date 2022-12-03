@@ -10,7 +10,8 @@ This is the final project from the React course on the online course provider [S
 
 ## Screenshot
 
-<!-- <img src="./screenshots/newyorktimes-clone-preview.png" alt="New York Times clone preview" width="600px"> -->
+<img src="./screenshots/newyorktimes-clone-mobile-preview.png" alt="New York Times clone mobile preview" width="25%"> <img src="./screenshots/newyorktimes-clone-desktop-preview.png" alt="New York Times clone desktop preview" width="60%">
+<img src="./screenshots/newyorktimes-clone-section-preview.png" alt="New York Times clone section preview" width="45%"> <img src="./screenshots/newyorktimes-clone-search-results-preview.png" alt="New York Times clone search results preview" width="54%">
 
 ## Project
 
@@ -18,7 +19,9 @@ Users should be able to:
 
 - View the optimal layout for the content depending on their device’s screen size
 - See the homepage with current top stories
-- Select a section from the navigation menu and see top stories related to that topic
+- Select a section from the navigation menu and see the top stories related to that topic
+- In the mobile and tablet versions, tap the menu icon to open the menu and the X icon to close it
+- In the desktop version, click on the magnifying glass icon to see the search input
 - Search for a topic and see a list of news related to the keyword entered
 
 ## Built with
