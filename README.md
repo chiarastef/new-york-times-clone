@@ -11,7 +11,7 @@ This is the final project from the React course on the online course provider [S
 ## Screenshot
 
 <img src="./screenshots/newyorktimes-clone-mobile-preview.png" alt="New York Times clone mobile preview" width="25%"> <img src="./screenshots/newyorktimes-clone-desktop-preview.png" alt="New York Times clone desktop preview" width="60%">
-<img src="./screenshots/newyorktimes-clone-section-preview.png" alt="New York Times clone section preview" width="45%"> <img src="./screenshots/newyorktimes-clone-search-results-preview.png" alt="New York Times clone search results preview" width="54%">
+<img src="./screenshots/newyorktimes-clone-section-preview.png" alt="New York Times clone section preview" width="48%"> <img src="./screenshots/newyorktimes-clone-search-results-preview.png" alt="New York Times clone search results preview" width="48%">
 
 ## Project
 
@@ -23,6 +23,7 @@ Users should be able to:
 - In the mobile and tablet versions, tap the menu icon to open the menu and the X icon to close it
 - In the desktop version, click on the magnifying glass icon to see the search input
 - Search for a topic and see a list of news related to the keyword entered
+- Sort the results of the search by revelance (default), newest or oldest
 
 ## Built with
 
