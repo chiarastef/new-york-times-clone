@@ -59,6 +59,7 @@
   text-transform: capitalize;
   height: 35px;
   border: var(--border);
+  border-radius: 3px;
   padding: 10px;
 }
 
