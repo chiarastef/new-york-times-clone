@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../context";
-
 import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
 
-import style from "../style/navbar.module.css";
 import logo from "../images/new-york-times-logo.png";
+import { useGlobalContext } from "../context";
+import style from "../style/navbar.module.css";
 
-function Navbar(props) {
+const Navbar = (props) => {
+  const navigate = useNavigate();
   const [search, setSearch] = React.useState("");
   // Navbar menu (mobile and tablet view)
   const [showMenu, setShowMenu] = React.useState(false);
@@ -15,8 +15,6 @@ function Navbar(props) {
   const [showSearch, setShowSearch] = React.useState(false);
 
   const { sections, formatSection } = useGlobalContext();
-
-  const navigate = useNavigate();
 
   // Stop body from scrolling when nav menu is open after checking if ref current is not undefined
   if (showMenu && props.container.current) {
@@ -28,13 +26,13 @@ function Navbar(props) {
   }
 
   // Search articles
-  function handleSearch(e) {
+  const handleSearch = (e) => {
     e.preventDefault();
     setShowMenu(false);
     setShowSearch(false);
     setSearch("");
     navigate(`/search/${search}`);
-  }
+  };
 
   // Get current date and format it
   const options = {
@@ -73,6 +71,7 @@ function Navbar(props) {
 
       <hr />
 
+      {/* Current date */}
       {showMenu || <div className={style.date}>{currentDate}</div>}
 
       {/* Navbar menu in desktop view */}
@@ -119,7 +118,6 @@ function Navbar(props) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-
             <button type="submit" className={`btn ${style.searchButton}`}>
               <HiOutlineSearch />
             </button>
@@ -148,6 +146,6 @@ function Navbar(props) {
       )}
     </nav>
   );
-}
+};
 
 export default Navbar;

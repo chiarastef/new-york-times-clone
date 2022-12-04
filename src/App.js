@@ -9,6 +9,7 @@ import Error from "./pages/Error";
 import Footer from "./components/Footer";
 
 function App() {
+  // Set container to stop body from scrolling when nav menu is open
   const container = React.useRef();
 
   return (

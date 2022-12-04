@@ -3,7 +3,7 @@ import axios from "axios";
 
 const AppContext = React.createContext();
 
-function AppProvider({ children }) {
+const AppProvider = ({ children }) => {
   const [loaded, setLoaded] = React.useState(false);
   const [section, setSection] = React.useState("");
   const [articles, setArticles] = React.useState([]);
@@ -28,7 +28,7 @@ function AppProvider({ children }) {
     "realestate",
   ];
 
-  // Format sections for navbar menu
+  // Format sections' names for navbar menu
   const formatSection = (section) => {
     switch (section) {
       case "us":
@@ -48,7 +48,7 @@ function AppProvider({ children }) {
   React.useEffect(() => {
     setLoaded(false);
 
-    // Call API only once we have a section
+    // Call API only once a section is defined
     section &&
       axios
         .get(
@@ -75,6 +75,7 @@ function AppProvider({ children }) {
       .catch((error) => console.log(error));
   }, []);
 
+  // Format articles' date
   const formatDate = (date) => {
     const options = {
       year: "numeric",
@@ -101,7 +102,7 @@ function AppProvider({ children }) {
       {children}
     </AppContext.Provider>
   );
-}
+};
 
 // Custom hook to pass values
 export const useGlobalContext = () => {

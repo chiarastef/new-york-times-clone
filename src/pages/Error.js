@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import style from "../style/page.module.css";
 
-function Error() {
+const Error = () => {
   return (
     <div className={style.container}>
       <div className={style.error}>
@@ -13,6 +13,6 @@ function Error() {
       </div>
     </div>
   );
-}
+};
 
 export default Error;

@@ -3,14 +3,14 @@ import { useGlobalContext } from "../context";
 
 import style from "../style/article.module.css";
 
-function SearchArticle({
+const SearchedArticle = ({
   byline,
   abstract,
   section_name,
   pub_date,
   headline,
   web_url,
-}) {
+}) => {
   const { formatDate } = useGlobalContext();
 
   return (
@@ -32,6 +32,6 @@ function SearchArticle({
       </div>
     </div>
   );
-}
+};
 
-export default SearchArticle;
+export default SearchedArticle;

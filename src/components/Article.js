@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 
 import style from "../style/article.module.css";
 
-function Article({
+const Article = ({
   section,
   published_date,
   title,
@@ -11,7 +11,7 @@ function Article({
   multimedia,
   abstract,
   url,
-}) {
+}) => {
   const { formatDate, formatSection } = useGlobalContext();
 
   if (section !== "admin" && section) {
@@ -51,6 +51,6 @@ function Article({
       </div>
     );
   }
-}
+};
 
 export default Article;

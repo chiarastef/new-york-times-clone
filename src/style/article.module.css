@@ -45,7 +45,7 @@
   margin-top: 8px;
 }
 
-/* Modifications every 4th article */
+/* Changes every 4th article */
 .container:nth-child(4n + 1) .title {
   font-size: 32px;
 }
@@ -77,6 +77,7 @@
   display: block;
 }
 
+/* Media Queries */
 @media screen and (max-width: 768px) {
   .container:last-of-type {
     border-bottom: none;

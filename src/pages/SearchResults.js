@@ -3,10 +3,10 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 
 import { useGlobalContext } from "../context";
-import SearchArticle from "../components/SearchArticle";
+import SearchedArticle from "../components/SearchedArticle";
 import style from "../style/page.module.css";
 
-function SearchResults() {
+const SearchResults = () => {
   const { formatSection, searchedArticles, loaded, searchArticles } =
     useGlobalContext();
   const { query } = useParams();
@@ -83,7 +83,7 @@ function SearchResults() {
       {loaded ? (
         <div className={style.container}>
           {sortedArray.map((article, index) => {
-            return <SearchArticle key={index} {...article} />;
+            return <SearchedArticle key={index} {...article} />;
           })}
         </div>
       ) : (
@@ -98,6 +98,6 @@ function SearchResults() {
       )}
     </div>
   );
-}
+};
 
 export default SearchResults;

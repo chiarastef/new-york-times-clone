@@ -1,11 +1,11 @@
 import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
+
 import { useGlobalContext } from "../context";
-
-import style from "../style/home.module.css";
 import Article from "../components/Article";
+import style from "../style/home.module.css";
 
-function Home() {
+const Home = () => {
   const { articles, setSection, loaded } = useGlobalContext();
 
   React.useEffect(() => {
@@ -32,6 +32,6 @@ function Home() {
       />
     );
   }
-}
+};
 
 export default Home;

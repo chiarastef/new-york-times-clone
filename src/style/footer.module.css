@@ -29,6 +29,7 @@
   border-top: var(--border);
 }
 
+/* Media queries */
 @media screen and (min-width: 768px) {
   .nav {
     columns: 3;

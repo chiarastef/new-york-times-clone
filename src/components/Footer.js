@@ -1,19 +1,20 @@
 import { Link, NavLink } from "react-router-dom";
-import { useGlobalContext } from "../context";
 
-import style from "../style/footer.module.css";
 import logo from "../images/new-york-times-logo.png";
+import { useGlobalContext } from "../context";
+import style from "../style/footer.module.css";
 
-function Footer() {
+const Footer = () => {
   const { sections, formatSection } = useGlobalContext();
 
-  function scrollToTop() {
+  // Scroll to top when logo is clicked (in case the user is already in the homepage)
+  const scrollToTop = () => {
     window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
-  }
+  };
 
   return (
     <>
@@ -22,7 +23,6 @@ function Footer() {
         <Link to="/" onClick={scrollToTop}>
           <img src={logo} alt="New York Times logo" className={style.logo} />
         </Link>
-
         <ul className={style.nav}>
           {sections.map((section, index) => {
             return (
@@ -38,13 +38,12 @@ function Footer() {
             );
           })}
         </ul>
-
         <div className={style.copyright}>
           <small>&copy; Copyright 2022, Chiara Stefanelli</small>
         </div>
       </footer>
     </>
   );
-}
+};
 
 export default Footer;

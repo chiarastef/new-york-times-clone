@@ -6,7 +6,7 @@ import { useGlobalContext } from "../context";
 import Article from "../components/Article";
 import style from "../style/page.module.css";
 
-function Section() {
+const Section = () => {
   const { formatSection, setSection, articles, loaded } = useGlobalContext();
   const { sectionName } = useParams();
 
@@ -20,7 +20,7 @@ function Section() {
       <div className={style.container}>
         <h2 className={style.title}>{formatSection(sectionName)} News</h2>
         <hr />
-        <div className={style.container}>No articles found</div>
+        <div className={style.carticle}>No articles found</div>
       </div>
     );
   }
@@ -47,6 +47,6 @@ function Section() {
       )}
     </div>
   );
-}
+};
 
 export default Section;
