@@ -12,15 +12,7 @@ function Article({
   abstract,
   url,
 }) {
-  const { formatSection } = useGlobalContext();
-
-  // Format date
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  const date = new Date(published_date).toLocaleDateString(undefined, options);
+  const { formatDate, formatSection } = useGlobalContext();
 
   if (section !== "admin" && section) {
     return (
@@ -28,7 +20,7 @@ function Article({
         {/* Section name and article date */}
         <div className={style.info}>
           <span className={style.section}>{formatSection(section)}</span>
-          <span className={style.date}>{date}</span>
+          <span className={style.date}>{formatDate(published_date)}</span>
         </div>
         <div className={style.mainContent}>
           {/* Title, author and abstract(for desktop view) */}

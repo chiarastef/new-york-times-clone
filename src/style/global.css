@@ -9,8 +9,13 @@
 :root {
   --primary-font: "Times New Roman", Times, serif;
   --secondary-font: Helvetica, Arial, sans-serif;
-  --border: 1px solid #ebebeb;
+  --border: 2px solid #ebebeb;
+  --primary-font-color: #121212;
   --secondary-font-color: #727272;
+}
+
+body {
+  color: var(--primary-font-color);
 }
 
 /* Global */
@@ -21,7 +26,7 @@
 }
 
 hr {
-  border: var(--border);
+  border: 1px solid #ebebeb;
 }
 
 .btn {

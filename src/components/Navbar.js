@@ -14,8 +14,9 @@ function Navbar(props) {
   // Search input (desktop view)
   const [showSearch, setShowSearch] = React.useState(false);
 
-  const navigate = useNavigate();
   const { sections, formatSection } = useGlobalContext();
+
+  const navigate = useNavigate();
 
   // Stop body from scrolling when nav menu is open after checking if ref current is not undefined
   if (showMenu && props.container.current) {
@@ -35,18 +36,27 @@ function Navbar(props) {
     navigate(`/search/${search}`);
   }
 
+  // Get current date and format it
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+  };
+  const currentDate = new Date().toLocaleDateString(undefined, options);
+
   return (
     <nav className={style.navbarContainer}>
       {/* Main navbar with logo */}
       <div className={style.navbar}>
         {showMenu ? (
           <HiOutlineX
-            className={style.icon}
+            className={`${style.icon} ${style.menuIcon}`}
             onClick={() => setShowMenu(false)}
           />
         ) : (
           <HiOutlineMenu
-            className={style.icon}
+            className={`${style.icon} ${style.menuIcon}`}
             onClick={() => setShowMenu(true)}
           />
         )}
@@ -56,30 +66,14 @@ function Navbar(props) {
         </Link>
 
         <HiOutlineSearch
-          className={`${style.searchIcon} ${style.icon}`}
+          className={`${style.icon} ${style.searchIcon}`}
           onClick={() => setShowSearch(!showSearch)}
         />
       </div>
 
       <hr />
 
-      {/* Search form in desktop view */}
-      {showSearch && (
-        <>
-          <form className={style.searchForm} onSubmit={handleSearch}>
-            <input
-              type="text"
-              placeholder="search"
-              className={style.searchInput}
-              autoFocus
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button type="submit" className={`btn ${style.searchButton}`}>
-              <HiOutlineSearch />
-            </button>
-          </form>
-        </>
-      )}
+      {showMenu || <div className={style.date}>{currentDate}</div>}
 
       {/* Navbar menu in desktop view */}
       <ul className={style.sections}>
@@ -98,7 +92,21 @@ function Navbar(props) {
         })}
       </ul>
 
-      <hr />
+      {/* Search form in desktop view */}
+      {showSearch && (
+        <form className={style.searchForm} onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="search"
+            className={style.searchInput}
+            autoFocus
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button type="submit" className={`btn ${style.searchButton}`}>
+            <HiOutlineSearch />
+          </button>
+        </form>
+      )}
 
       {/* Navbar menu in mobile and tablet view */}
       {showMenu && (

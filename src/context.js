@@ -29,7 +29,7 @@ function AppProvider({ children }) {
   ];
 
   // Format sections for navbar menu
-  function formatSection(section) {
+  const formatSection = (section) => {
     switch (section) {
       case "us":
         return "U.S.";
@@ -42,7 +42,7 @@ function AppProvider({ children }) {
       default:
         return section;
     }
-  }
+  };
 
   // NY Times Top Stories API Call
   React.useEffect(() => {
@@ -75,6 +75,16 @@ function AppProvider({ children }) {
       .catch((error) => console.log(error));
   }, []);
 
+  const formatDate = (date) => {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+
+    return new Date(date).toLocaleDateString(undefined, options);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -83,6 +93,7 @@ function AppProvider({ children }) {
         setSection,
         loaded,
         articles,
+        formatDate,
         searchArticles,
         searchedArticles,
       }}

@@ -35,7 +35,6 @@ Users should be able to:
 - [React Router](https://reactrouter.com/en/main)
 - [axios](https://axios-http.com/)
 - [New York Times API](https://developer.nytimes.com/)
-- [Flaticon](https://www.flaticon.com/) for the favicon
 - [React Spinners](https://www.npmjs.com/package/react-spinners)
 
 ## Author

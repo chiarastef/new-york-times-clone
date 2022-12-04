@@ -1,4 +1,5 @@
 import React from "react";
+import { useGlobalContext } from "../context";
 
 import style from "../style/article.module.css";
 
@@ -10,19 +11,15 @@ function SearchArticle({
   headline,
   web_url,
 }) {
-  // Format date
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  const date = new Date(pub_date).toLocaleDateString(undefined, options);
+  const { formatDate } = useGlobalContext();
 
   return (
     <div className={style.container}>
       <div className={style.info}>
         <span className={style.section}>{section_name}</span>
-        <span className={`${style.date} ${style.searchedDate}`}>{date}</span>
+        <span className={`${style.date} ${style.searchedDate}`}>
+          {formatDate(pub_date)}
+        </span>
       </div>
       <a href={web_url} target="_blank" rel="noreferrer">
         <h3 className={`${style.title} ${style.searchedTitle}`}>
