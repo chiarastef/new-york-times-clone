@@ -20,7 +20,7 @@ const Section = () => {
       <div className={style.container}>
         <h2 className={style.title}>{formatSection(sectionName)} News</h2>
         <hr />
-        <div className={style.carticle}>No articles found</div>
+        <div className={style.article}>No articles found</div>
       </div>
     );
   }
