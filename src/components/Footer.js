@@ -7,7 +7,7 @@ import style from "../style/footer.module.css";
 const Footer = () => {
   const { sections, formatSection } = useGlobalContext();
 
-  // Scroll to top when logo is clicked (in case the user is already in the homepage)
+  // Scroll to top when a nav link is clicked
   const scrollToTop = () => {
     window.scroll({
       top: 0,
@@ -28,9 +28,11 @@ const Footer = () => {
             return (
               <li key={index}>
                 {section === "home" ? (
-                  <NavLink to={`/`}>{formatSection(section)}</NavLink>
+                  <NavLink to={`/`} onClick={scrollToTop}>
+                    {formatSection(section)}
+                  </NavLink>
                 ) : (
-                  <NavLink to={`/section/${section}`}>
+                  <NavLink to={`/section/${section}`} onClick={scrollToTop}>
                     {formatSection(section)}
                   </NavLink>
                 )}
