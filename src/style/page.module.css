@@ -8,6 +8,22 @@
   margin-top: 30px;
 }
 
+.titleElement {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.sortOptions {
+  width: 158px;
+  background-color: transparent;
+  border: none;
+  color: var(--secondary-font-color);
+  font-family: var(--secondary-font);
+  padding: 5px 18px 5px 8px;
+  cursor: pointer;
+}
+
 .title {
   font-size: 34px;
   text-transform: capitalize;
@@ -31,6 +47,12 @@
     grid-gap: 20px;
     grid-auto-flow: dense;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .titleElement {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
