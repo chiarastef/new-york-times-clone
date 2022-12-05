@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { useGlobalContext } from "../context";
-import Article from "../components/Article";
-import style from "../style/page.module.css";
+import Article from "../article/Article";
+import style from "./page.module.css";
 
 const Section = () => {
   const { formatSection, setSection, articles, loaded } = useGlobalContext();
@@ -17,7 +17,7 @@ const Section = () => {
   // Check if there are articles related to the section
   if (loaded && articles.length < 1) {
     return (
-      <div className={style.container}>
+      <div className="sectionContainer">
         <h2 className={style.title}>{formatSection(sectionName)} News</h2>
         <hr />
         <div className={style.article}>No articles found</div>
@@ -26,7 +26,7 @@ const Section = () => {
   }
 
   return (
-    <div className={style.container}>
+    <div className="sectionContainer">
       <h2 className={style.title}>{formatSection(sectionName)} News</h2>
       <hr />
       {loaded ? (

@@ -25,6 +25,11 @@ body {
   height: 100%;
 }
 
+.sectionContainer {
+  padding: 0 20px;
+  margin-top: 40px;
+}
+
 hr {
   border: 1px solid #ebebeb;
 }

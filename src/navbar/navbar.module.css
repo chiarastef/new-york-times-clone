@@ -67,6 +67,12 @@
   height: 35px;
   padding: 8px;
   margin-left: 10px;
+  transition: background-color 2s ease;
+}
+
+.searchButton:active,
+.searchButton:hover {
+  background-color: #326891;
 }
 
 /* Navbar menu (mobile and tablet view) */
@@ -100,11 +106,22 @@
 
 /* Nav links */
 .sections > li > a,
-.menu > li,
+.menu > li > a,
 a {
   text-decoration: none;
   color: #000000;
   cursor: pointer;
+  border-radius: 3px;
+  padding: 4px;
+}
+
+.sections > li > a {
+  transition: background-color 1.5s ease;
+}
+
+.sections > li > a:active,
+.sections > li > a:hover {
+  background-color: #f7f7f7;
 }
 
 /* Media Queries */

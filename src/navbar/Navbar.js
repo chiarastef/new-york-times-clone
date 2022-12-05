@@ -4,7 +4,7 @@ import { HiOutlineMenu, HiOutlineSearch, HiOutlineX } from "react-icons/hi";
 
 import logo from "../images/new-york-times-logo.png";
 import { useGlobalContext } from "../context";
-import style from "../style/navbar.module.css";
+import style from "./navbar.module.css";
 
 const Navbar = (props) => {
   const navigate = useNavigate();
@@ -28,10 +28,13 @@ const Navbar = (props) => {
   // Search articles
   const handleSearch = (e) => {
     e.preventDefault();
-    setShowMenu(false);
-    setShowSearch(false);
-    setSearch("");
-    navigate(`/search/${search}`);
+    // Search only if user typed something in input field
+    if (search) {
+      setShowMenu(false);
+      setShowSearch(false);
+      setSearch("");
+      navigate(`/search/${search}`);
+    }
   };
 
   // Get current date and format it

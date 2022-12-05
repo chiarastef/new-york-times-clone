@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Section from "./pages/Section";
-import SearchResults from "./pages/SearchResults";
-import Error from "./pages/Error";
-import Footer from "./components/Footer";
+import Navbar from "./navbar/Navbar";
+import Home from "./home/Home";
+import Section from "./page/Section";
+import SearchResults from "./page/SearchResults";
+import Error from "./error/Error";
+import Footer from "./footer/Footer";
 
 function App() {
   // Set container to stop body from scrolling when nav menu is open

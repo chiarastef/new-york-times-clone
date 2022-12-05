@@ -1,9 +1,4 @@
 /* Section and SearchResults */
-.container {
-  padding: 0 20px;
-  margin-top: 50px;
-}
-
 .title {
   font-size: 34px;
   text-transform: capitalize;
@@ -30,18 +25,6 @@
   font-family: var(--secondary-font);
   padding: 5px 18px 5px 8px;
   cursor: pointer;
-}
-
-/* Error page */
-.error {
-  text-align: center;
-}
-
-.backHome {
-  display: inline-block;
-  height: fit-content;
-  margin-top: 15px;
-  padding: 12px;
 }
 
 /* Media Queries */

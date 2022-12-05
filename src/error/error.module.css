@@ -1,0 +1,16 @@
+.error {
+  text-align: center;
+}
+
+.backHome {
+  display: inline-block;
+  height: fit-content;
+  margin-top: 15px;
+  padding: 12px;
+  transition: background-color 2s ease;
+}
+
+.backHome:active,
+.backHome:hover {
+  background-color: #326891;
+}

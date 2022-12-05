@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import logo from "../images/new-york-times-logo.png";
 import { useGlobalContext } from "../context";
-import style from "../style/footer.module.css";
+import style from "./footer.module.css";
 
 const Footer = () => {
   const { sections, formatSection } = useGlobalContext();

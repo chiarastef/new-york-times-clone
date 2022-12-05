@@ -2,8 +2,8 @@ import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { useGlobalContext } from "../context";
-import Article from "../components/Article";
-import style from "../style/home.module.css";
+import Article from "../article/Article";
+import style from "./home.module.css";
 
 const Home = () => {
   const { articles, setSection, loaded } = useGlobalContext();

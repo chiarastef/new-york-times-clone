@@ -3,8 +3,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 
 import { useGlobalContext } from "../context";
-import SearchedArticle from "../components/SearchedArticle";
-import style from "../style/page.module.css";
+import SearchedArticle from "../article/SearchedArticle";
+import style from "./page.module.css";
 
 const SearchResults = () => {
   const { formatSection, searchedArticles, loaded, searchArticles } =
@@ -54,17 +54,17 @@ const SearchResults = () => {
   // Check if there are search results
   if (loaded && searchedArticles.length < 1) {
     return (
-      <div className={style.container}>
+      <div className="sectionContainer">
         <span className={style.preTitle}>Showing results for:</span>
         <h2 className={style.title}>{formatSection(query)}</h2>
         <hr />
-        <div className={style.container}>No search results found</div>
+        <div className="sectionContainer">No search results found</div>
       </div>
     );
   }
 
   return (
-    <div className={style.container}>
+    <div className="sectionContainer">
       <div className={style.titleElement}>
         <div>
           <span className={style.preTitle}>Showing results for:</span>
@@ -81,7 +81,7 @@ const SearchResults = () => {
       </div>
       <hr />
       {loaded ? (
-        <div className={style.container}>
+        <div className="sectionContainer">
           {sortedArray.map((article, index) => {
             return <SearchedArticle key={index} {...article} />;
           })}

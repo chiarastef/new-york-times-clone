@@ -1,7 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "../context";
 
-import style from "../style/article.module.css";
+import style from "./article.module.css";
 
 const SearchedArticle = ({
   byline,
