@@ -3,6 +3,8 @@ import { useGlobalContext } from "../context";
 
 import style from "./article.module.css";
 
+const classNames = require("classnames");
+
 const Article = ({
   section,
   published_date,
@@ -29,7 +31,7 @@ const Article = ({
               <h3 className={style.title}>{title}</h3>
             </a>
             <div className={style.author}>{byline}</div>
-            <div className={`${style.abstract} ${style.desktopView}`}>
+            <div className={classNames(style.abstract, style.desktopView)}>
               {abstract}
             </div>
           </div>
@@ -44,7 +46,7 @@ const Article = ({
             )}
           </div>
           {/* Abstract for mobile view */}
-          <div className={`${style.abstract} ${style.mobileView}`}>
+          <div className={classNames(style.abstract, style.mobileView)}>
             {abstract}
           </div>
         </div>

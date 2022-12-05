@@ -106,11 +106,7 @@
 
 /* Nav links */
 .sections > li > a,
-.menu > li > a,
-a {
-  text-decoration: none;
-  color: #000000;
-  cursor: pointer;
+.menu > li > a {
   border-radius: 3px;
   padding: 4px;
 }

@@ -37,6 +37,7 @@ Users should be able to:
 - [New York Times API](https://developer.nytimes.com/)
 - [axios](https://axios-http.com/)
 - [React Spinners](https://www.npmjs.com/package/react-spinners)
+- [classnames](https://www.npmjs.com/package/classnames)
 
 ## Author
 

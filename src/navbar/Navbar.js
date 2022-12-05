@@ -6,6 +6,8 @@ import logo from "../images/new-york-times-logo.png";
 import { useGlobalContext } from "../context";
 import style from "./navbar.module.css";
 
+const classNames = require("classnames");
+
 const Navbar = (props) => {
   const navigate = useNavigate();
   const [search, setSearch] = React.useState("");
@@ -52,12 +54,12 @@ const Navbar = (props) => {
       <div className={style.navbar}>
         {showMenu ? (
           <HiOutlineX
-            className={`${style.icon} ${style.menuIcon}`}
+            className={classNames(style.icon, style.menuIcon)}
             onClick={() => setShowMenu(false)}
           />
         ) : (
           <HiOutlineMenu
-            className={`${style.icon} ${style.menuIcon}`}
+            className={classNames(style.icon, style.menuIcon)}
             onClick={() => setShowMenu(true)}
           />
         )}
@@ -67,7 +69,7 @@ const Navbar = (props) => {
         </Link>
 
         <HiOutlineSearch
-          className={`${style.icon} ${style.searchIcon}`}
+          className={classNames(style.icon, style.searchIcon)}
           onClick={() => setShowSearch(!showSearch)}
         />
       </div>
@@ -104,7 +106,10 @@ const Navbar = (props) => {
             autoFocus
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button type="submit" className={`btn ${style.searchButton}`}>
+          <button
+            type="submit"
+            className={classNames("btn", style.searchButton)}
+          >
             <HiOutlineSearch />
           </button>
         </form>
@@ -121,7 +126,10 @@ const Navbar = (props) => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button type="submit" className={`btn ${style.searchButton}`}>
+            <button
+              type="submit"
+              className={classNames("btn", style.searchButton)}
+            >
               <HiOutlineSearch />
             </button>
           </form>
