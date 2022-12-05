@@ -1,8 +1,8 @@
 import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
-import Article from "../article/Article";
 import { useFetchSectionsData } from "../hooks/useFetchSectionsData";
+import Article from "../article/Article";
 import style from "./home.module.css";
 
 const Home = () => {

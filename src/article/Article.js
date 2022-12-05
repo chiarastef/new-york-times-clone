@@ -1,6 +1,6 @@
 import React from "react";
-import { useGlobalContext } from "../context";
 
+import { useGlobalContext } from "../context";
 import style from "./article.module.css";
 
 const classNames = require("classnames");
