@@ -10,10 +10,10 @@ import style from "./page.module.css";
 const Section = () => {
   const { formatSection } = useGlobalContext();
   const { sectionName } = useParams();
-  const { loadedStatus, data } = useFetchSectionsData(sectionName);
+  const { loaded, articles } = useFetchSectionsData(sectionName);
 
   // Check if there are articles related to the section
-  if (loadedStatus && data.length < 1) {
+  if (loaded && articles.length < 1) {
     return (
       <div className="sectionContainer">
         <h2 className={style.title}>{formatSection(sectionName)} News</h2>
@@ -27,9 +27,9 @@ const Section = () => {
     <div className="sectionContainer">
       <h2 className={style.title}>{formatSection(sectionName)} News</h2>
       <hr />
-      {loadedStatus ? (
+      {loaded ? (
         <div className={style.article}>
-          {data.map((article, index) => {
+          {articles.map((article, index) => {
             return <Article key={index} {...article} />;
           })}
         </div>

@@ -11,7 +11,7 @@ const SearchResults = () => {
   const { formatSection } = useGlobalContext();
   const { query } = useParams();
 
-  const { loadedStatus, data } = useFetchSearchData(query);
+  const { loaded, articles } = useFetchSearchData(query);
 
   // Sort articles
   // Sort by reference, newest or oldest
@@ -19,15 +19,15 @@ const SearchResults = () => {
   const [sortedArray, setSortedArray] = React.useState([]);
 
   React.useEffect(() => {
-    setSortedArray(data);
-  }, [data]);
+    setSortedArray(articles);
+  }, [articles]);
 
   React.useEffect(() => {
     // Articles arrays sorted by newest and oldest
-    const newestArray = [...data].sort(function (a, b) {
+    const newestArray = [...articles].sort(function (a, b) {
       return new Date(b.pub_date) - new Date(a.pub_date);
     });
-    const oldestArray = [...data].sort(function (a, b) {
+    const oldestArray = [...articles].sort(function (a, b) {
       return new Date(a.pub_date) - new Date(b.pub_date);
     });
 
@@ -35,7 +35,7 @@ const SearchResults = () => {
     if (sortType) {
       switch (sortType) {
         case "revelance":
-          setSortedArray(data);
+          setSortedArray(articles);
           break;
         case "newest":
           setSortedArray(newestArray);
@@ -44,13 +44,13 @@ const SearchResults = () => {
           setSortedArray(oldestArray);
           break;
         default:
-          setSortedArray(data);
+          setSortedArray(articles);
       }
     }
-  }, [sortType, data]);
+  }, [sortType, articles]);
 
   // Check if there are search results
-  if (loadedStatus && data.length < 1) {
+  if (loaded && articles.length < 1) {
     return (
       <div className="sectionContainer">
         <span className={style.preTitle}>Showing results for:</span>
@@ -78,7 +78,7 @@ const SearchResults = () => {
         </select>
       </div>
       <hr />
-      {loadedStatus ? (
+      {loaded ? (
         <div className="sectionContainer">
           {sortedArray.map((article, index) => {
             return <SearchedArticle key={index} {...article} />;
