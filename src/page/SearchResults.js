@@ -3,17 +3,15 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 
 import { useGlobalContext } from "../context";
+import { useFetchSearchData } from "../hooks/useFetchSearchData";
 import SearchedArticle from "../article/SearchedArticle";
 import style from "./page.module.css";
 
 const SearchResults = () => {
-  const { formatSection, searchedArticles, loaded, searchArticles } =
-    useGlobalContext();
+  const { formatSection } = useGlobalContext();
   const { query } = useParams();
 
-  React.useEffect(() => {
-    searchArticles(query);
-  }, [query, searchArticles]);
+  const { loadedStatus, data } = useFetchSearchData(query);
 
   // Sort articles
   // Sort by reference, newest or oldest
@@ -21,15 +19,15 @@ const SearchResults = () => {
   const [sortedArray, setSortedArray] = React.useState([]);
 
   React.useEffect(() => {
-    setSortedArray(searchedArticles);
-  }, [searchedArticles]);
+    setSortedArray(data);
+  }, [data]);
 
   React.useEffect(() => {
     // Articles arrays sorted by newest and oldest
-    const newestArray = [...searchedArticles].sort(function (a, b) {
+    const newestArray = [...data].sort(function (a, b) {
       return new Date(b.pub_date) - new Date(a.pub_date);
     });
-    const oldestArray = [...searchedArticles].sort(function (a, b) {
+    const oldestArray = [...data].sort(function (a, b) {
       return new Date(a.pub_date) - new Date(b.pub_date);
     });
 
@@ -37,7 +35,7 @@ const SearchResults = () => {
     if (sortType) {
       switch (sortType) {
         case "revelance":
-          setSortedArray(searchedArticles);
+          setSortedArray(data);
           break;
         case "newest":
           setSortedArray(newestArray);
@@ -46,13 +44,13 @@ const SearchResults = () => {
           setSortedArray(oldestArray);
           break;
         default:
-          setSortedArray(searchedArticles);
+          setSortedArray(data);
       }
     }
-  }, [sortType, searchedArticles]);
+  }, [sortType, data]);
 
   // Check if there are search results
-  if (loaded && searchedArticles.length < 1) {
+  if (loadedStatus && data.length < 1) {
     return (
       <div className="sectionContainer">
         <span className={style.preTitle}>Showing results for:</span>
@@ -80,7 +78,7 @@ const SearchResults = () => {
         </select>
       </div>
       <hr />
-      {loaded ? (
+      {loadedStatus ? (
         <div className="sectionContainer">
           {sortedArray.map((article, index) => {
             return <SearchedArticle key={index} {...article} />;

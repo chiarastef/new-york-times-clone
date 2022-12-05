@@ -3,19 +3,17 @@ import { useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { useGlobalContext } from "../context";
+import { useFetchSectionsData } from "../hooks/useFetchSectionsData";
 import Article from "../article/Article";
 import style from "./page.module.css";
 
 const Section = () => {
-  const { formatSection, setSection, articles, loaded } = useGlobalContext();
+  const { formatSection } = useGlobalContext();
   const { sectionName } = useParams();
-
-  React.useEffect(() => {
-    setSection(sectionName);
-  }, [sectionName, setSection]);
+  const { loadedStatus, data } = useFetchSectionsData(sectionName);
 
   // Check if there are articles related to the section
-  if (loaded && articles.length < 1) {
+  if (loadedStatus && data.length < 1) {
     return (
       <div className="sectionContainer">
         <h2 className={style.title}>{formatSection(sectionName)} News</h2>
@@ -29,9 +27,9 @@ const Section = () => {
     <div className="sectionContainer">
       <h2 className={style.title}>{formatSection(sectionName)} News</h2>
       <hr />
-      {loaded ? (
+      {loadedStatus ? (
         <div className={style.article}>
-          {articles.map((article, index) => {
+          {data.map((article, index) => {
             return <Article key={index} {...article} />;
           })}
         </div>

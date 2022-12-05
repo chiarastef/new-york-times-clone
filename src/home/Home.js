@@ -1,21 +1,17 @@
 import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
-import { useGlobalContext } from "../context";
 import Article from "../article/Article";
+import { useFetchSectionsData } from "../hooks/useFetchSectionsData";
 import style from "./home.module.css";
 
 const Home = () => {
-  const { articles, setSection, loaded } = useGlobalContext();
+  const { loadedStatus, data } = useFetchSectionsData("home");
 
-  React.useEffect(() => {
-    setSection("home");
-  }, [setSection]);
-
-  if (loaded) {
+  if (loadedStatus) {
     return (
       <div className={style.container}>
-        {articles.map((article, index) => {
+        {data.map((article, index) => {
           return <Article key={index} {...article} />;
         })}
       </div>
